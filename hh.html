@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+ <h2>helo world</h2>
+
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ <script type="text/javascript">
+ $(function(){
+    Swal.fire({
+				title: 'Sweet!',
+				text: 'Modal with a custom image.',
+				imageUrl: 'https://unsplash.it/400/200',
+				imageWidth: 400,
+				imageHeight: 200,
+				imageAlt: 'Custom image',
+				animation: false
+               })
+ })
+ </script>
+</body>
+</html>
+
+
+
+	<!-- sweetAlert -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$('#hire').click(function(e){
+
+			var valid = this.form.checkValidity();
+
+			if(valid){
+
+
+			var name    	= $('#name').val();
+			var email   	= $('#email').val();
+			var number		= $('#number').val();
+			var message     = $('#message').val();
+			
+			
+
+				e.preventDefault();	
+
+				$.ajax({
+					type: 'POST',
+					url: 'hire.php',
+					data: {name: name,email: email,number: number,message: message},
+					success: function(data){
+					Swal.fire({
+								'title': 'Successful',
+								'text': data,
+								'type': 'success'
+								})
+							
+					},
+					error: function(data){
+						Swal.fire({
+								'title': 'Errors',
+								'text': 'There were errors while saving the data.',
+								'type': 'error'
+								})
+					}
+				});
+
+				
+			}else{
+				
+			}
+
+			
+
+
+
+		});		
+
+		
+	});
+	
+</script>
